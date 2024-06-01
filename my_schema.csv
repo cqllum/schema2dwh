@@ -1,0 +1,27 @@
+TABLE_CATALOG,TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,ORDINAL_POSITION,COLUMN_DEFAULT,IS_NULLABLE,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,CHARACTER_OCTET_LENGTH,NUMERIC_PRECISION,NUMERIC_SCALE,DATETIME_PRECISION,COLUMN_KEY,EXTRA
+database_name,information_schema,COLUMNS,...,...
+database_name,information_schema,KEY_COLUMN_USAGE,...,...
+database_name,information_schema,TABLES,...,...
+your_database_name,your_schema_name,products,...,...
+your_database_name,your_schema_name,customers,...,...
+your_database_name,your_schema_name,orders,...,...
+your_database_name,your_schema_name,products,product_id,1,NULL,NO,int,11,NULL,10,0,NULL,PRI,auto_increment
+your_database_name,your_schema_name,products,name,2,NULL,YES,varchar,255,255,NULL,NULL,NULL,,
+your_database_name,your_schema_name,products,description,3,NULL,YES,text,NULL,NULL,NULL,NULL,NULL,,
+your_database_name,your_schema_name,products,price,4,0.00,NO,decimal,10,2,10,2,NULL,,
+your_database_name,your_schema_name,products,category_id,5,NULL,YES,int,11,NULL,10,0,NULL,MUL,,
+your_database_name,your_schema_name,customers,customer_id,1,NULL,NO,int,11,NULL,10,0,NULL,PRI,auto_increment
+your_database_name,your_schema_name,customers,first_name,2,NULL,YES,varchar,50,50,NULL,NULL,NULL,,
+your_database_name,your_schema_name,customers,last_name,3,NULL,YES,varchar,50,50,NULL,NULL,NULL,,
+your_database_name,your_schema_name,customers,email,4,NULL,YES,varchar,255,255,NULL,NULL,NULL,UNI,,
+your_database_name,your_schema_name,customers,phone_number,5,NULL,YES,varchar,20,20,NULL,NULL,NULL,,
+your_database_name,your_schema_name,orders,order_id,1,NULL,NO,int,11,NULL,10,0,NULL,PRI,auto_increment
+your_database_name,your_schema_name,orders,customer_id,2,NULL,NO,int,11,NULL,10,0,NULL,MUL,,
+your_database_name,your_schema_name,orders,order_date,3,NULL,NO,datetime,NULL,NULL,NULL,NULL,NULL,,
+your_database_name,your_schema_name,orders,order_status,4,NULL,YES,varchar,20,20,NULL,NULL,NULL,,
+your_database_name,your_schema_name,order_items,order_id,1,NULL,NO,int,11,NULL,10,0,NULL,MUL,,
+your_database_name,your_schema_name,order_items,product_id,2,NULL,NO,int,11,NULL,10,0,NULL,MUL,,
+your_database_name,your_schema_name,order_items,quantity,3,1,NO,int,11,NULL,10,0,NULL,,
+CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+CONSTRAINT fk_order_items_order FOREIGN KEY (order_id) REFERENCES orders(order_id),
+CONSTRAINT fk_order_items_product FOREIGN KEY (product_id) REFERENCES products(product_id)
